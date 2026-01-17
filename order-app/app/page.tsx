@@ -21,12 +21,58 @@ type MenuItem = {
   };
 };
 const DRINK_MENU: MenuItem[] = [
-  { id: "d1", name: "コーラ", price: 200 },
-  { id: "d2", name: "ウーロン茶", price: 200 },
-  { id: "d3", name: "オレンジジュース", price: 250 },
-  { id: "d4", name: "生ビール", price: 500 },
-  { id: "d5", name: "レモンサワー", price: 450 },
+  {
+    id: "cola",
+    name: "コーラ",
+    price: 200,
+    image: {
+      url: "/drinks/coke.jpg",
+      width: 300,
+      height: 200,
+    },
+  },
+  {
+    id: "oolong",
+    name: "ウーロン茶",
+    price: 200,
+    image: {
+      url: "/drinks/oolong.jpg",
+      width: 300,
+      height: 200,
+    },
+  },
+  {
+    id: "orange",
+    name: "オレンジジュース",
+    price: 250,
+    image: {
+      url: "/drinks/orange.jpg",
+      width: 300,
+      height: 200,
+    },
+  },
+  {
+    id: "beer",
+    name: "生ビール",
+    price: 500,
+    image: {
+      url: "/drinks/draftbeer.jpg",
+      width: 300,
+      height: 200,
+    },
+  },
+  {
+    id: "lemonsour",
+    name: "レモンサワー",
+    price: 450,
+    image: {
+      url: "/drinks/lemonsour.png",
+      width: 300,
+      height: 200,
+    },
+  },
 ];
+
 export default function MenuPage() {
   // menu,cart 表示データを入れる配列、
   // setMenu,setCart は、menu,cart を更新する関数function
@@ -121,6 +167,15 @@ export default function MenuPage() {
         <ul className={styles.list}>
           {DRINK_MENU.map((drink) => (
             <li key={drink.id} className={styles.menuItem}>
+              {drink.image && (
+                <Image
+                  src={drink.image.url}
+                  alt={drink.name}
+                  width={drink.image.width}
+                  height={drink.image.height}
+                  className={styles.menuImage}
+                />
+              )}
               <p className={styles.name}>
                 {drink.name} — {drink.price}円
               </p>
@@ -175,7 +230,10 @@ export default function MenuPage() {
         {/* 会計へボタン */}
         <button
           className={styles.checkoutButton}
-          onClick={() => router.push("/checkout")}
+          onClick={() => {
+            clearCart();
+            router.push("/thankyou");
+          }}
         >
           会計する
         </button>

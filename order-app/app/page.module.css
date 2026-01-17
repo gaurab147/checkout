@@ -291,9 +291,13 @@
   margin-bottom: 2rem;
 }
 .menuImage {
-  border-radius: 0.5rem;
+  width: 100%;
+  height: 180px;
   object-fit: cover;
+  border-radius: 0.5rem;
+  display: block;
 }
+
 .name {
   margin-top: 0.5rem;
 }
@@ -391,4 +395,9 @@
   background-color: #c9ccd0;
   padding: 16px;
   border-radius: 8px;
+}
+.menuItem .menuImage {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
 }

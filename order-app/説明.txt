@@ -1,2 +1,2 @@
 git hub のリンク　= https://github.com/gaurab147/checkout.git
-vercel　のリンク　= checkout-three-kappa.vercel.app
+vercel　のリンク　= https://gaurab147-checkout.vercel.app/

@@ -136,7 +136,6 @@ export default function MenuPage() {
         <h1 className={styles.title}>メニュー一覧</h1>
         <ul className={styles.list}>
           {menu.map((item) => (
-            // <li key={item.id} className={styles.item}>
             <li key={item.id} className={styles.menuItem}>
               {item.image && (
                 <Image
@@ -195,7 +194,6 @@ export default function MenuPage() {
         </Link>
       </main>
 
-      {/* 注文状況 */}
       <aside className={styles.cart}>
         <h2 className={styles.cartTitle}>注文状況</h2>
         {cart.length === 0 ? (
@@ -212,11 +210,16 @@ export default function MenuPage() {
                   className={styles.cartImage}
                 />
               )}
-              <p className={styles.cartName}>
-                {item.name} — {item.price}円
-              </p>
-              {/* remove button */}
-              <button onClick={() => removeItem(i)}>Delete</button>
+              <div className={styles.cartText}>
+                <p className={styles.cartName}>{item.name}</p>
+                <p className={styles.cartPrice}>{item.price}円</p>
+              </div>
+              <button
+                className={styles.deleteButton}
+                onClick={() => removeItem(i)}
+              >
+                削除
+              </button>
             </div>
           ))
         )}

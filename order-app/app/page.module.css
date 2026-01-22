@@ -51,7 +51,9 @@
   border-radius: var(--border-radius);
   background: rgba(var(--card-rgb), 0);
   border: 1px solid rgba(var(--card-border-rgb), 0);
-  transition: background 200ms, border 200ms;
+  transition:
+    background 200ms,
+    border 200ms;
 }
 
 .card span {
@@ -108,7 +110,6 @@
 .logo {
   position: relative;
 }
-/* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
     background: rgba(var(--card-rgb), 0.1);
@@ -119,14 +120,12 @@
     transform: translateX(4px);
   }
 }
-
 .menuImage {
-  width: 25%; /* 表示したい幅（px や % など） */
-  height: auto; /* アスペクト比を保って高さを自動調整 */
-  object-fit: cover; /* はみ出した部分を切り取り、揃える */
-  border-radius: 8px; /* 任意：角丸にしたい場合 */
-  display: block;
-  margin-bottom: 8px;
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  background-color: #f5f5f5;
+  border-radius: 8px;
 }
 
 @media (prefers-reduced-motion) {
@@ -134,8 +133,6 @@
     transform: none;
   }
 }
-
-/* Mobile */
 @media (max-width: 700px) {
   .content {
     padding: 4rem;
@@ -211,8 +208,6 @@
     z-index: 1;
   }
 }
-
-/* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {
     grid-template-columns: repeat(2, 50%);
@@ -242,19 +237,13 @@
   display: flex;
 }
 .menuList {
-  /* flex: 3; */
-  /* display: grid;
-  /* 1行あたり自動で入るだけ列を作る */
-  /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
-  /* タイル同士の余白 */
-  /* gap: 1rem; */
   padding: 1rem;
 }
 
 .menuItem {
   display: flex;
   flex-direction: column;
-  align-items: center; /* 画像とテキストを中央寄せ */
+  align-items: center;
   background: #fff;
   border: 1px solid #eee;
   border-radius: 4px;
@@ -284,8 +273,6 @@
   padding: 0;
   margin: 0;
   list-style: none;
-  /* list-style: none;
-  padding: 0; */
 }
 .item {
   margin-bottom: 2rem;
@@ -327,7 +314,6 @@
 }
 
 .cart {
-  /* flex: 1; */
   width: 15%;
   border-left: 1px solid #ddd;
   padding: 1rem;
@@ -353,7 +339,6 @@
   margin-left: 0.5rem;
 }
 
-/* カートの合計 */
 .cartTotal {
   margin-top: 1rem;
   padding-top: 0.5rem;
@@ -363,7 +348,6 @@
   text-align: right;
 }
 
-/* 会計ボタン */
 .checkoutButton {
   display: block;
   width: 100%;
@@ -400,4 +384,107 @@
   width: 100%;
   height: 180px;
   object-fit: cover;
+}
+
+.container {
+  display: flex;
+  gap: 16px;
+  padding: 18px;
+  background: #f6f5f2;
+  min-height: 100vh;
+}
+
+.shopHeader {
+  background: #ffffff;
+  border: 1px solid #ece7df;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.shopName {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: 0.5px;
+}
+
+.shopSub {
+  margin: 6px 0 12px;
+  color: #666;
+  font-size: 14px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.tab {
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid #ece7df;
+  background: #faf9f7;
+  color: #444;
+}
+
+.tabActive {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.menuItem {
+  background: #fff;
+  border: 1px solid #ece7df;
+  border-radius: 14px;
+  padding: 12px;
+  overflow: hidden;
+}
+
+.menuItem .menuImage {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.name {
+  margin: 10px 0 8px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.addButton {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 12px;
+  background: #d62828; /* sushi red */
+  color: white;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  opacity: 0.9;
+}
+
+.cart {
+  width: 320px;
+  background: #fff;
+  border: 1px solid #ece7df;
+  border-radius: 14px;
+  padding: 16px;
+  height: fit-content;
 }

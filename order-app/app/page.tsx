@@ -80,6 +80,7 @@ export default function MenuPage() {
   const [cart, setCart] = useState<MenuItem[]>([]);
   const totalAmount = cart.reduce((sum, item) => sum + Number(item.price), 0); // カートの合計
   const router = useRouter(); //画面移動で使用
+  const [errorMsg, setErrorMsg] = useState("");
 
   // useEffect(() => { fetch(...); }, []); 画面の準備が終わったタイミングでmicroCMSからデータを取得する
   useEffect(() => {
@@ -126,6 +127,15 @@ export default function MenuPage() {
     newCart.splice(index, 1);
     setCart(newCart);
     localStorage.setItem("cart", JSON.stringify(newCart));
+  };
+  const goCheckout = () => {
+    if (cart.length === 0) {
+      setErrorMsg("まだ注文はありません。");
+      return;
+    }
+    setErrorMsg("");
+    clearCart();
+    router.push("/thankyou");
   };
 
   return (
@@ -197,7 +207,7 @@ export default function MenuPage() {
       <aside className={styles.cart}>
         <h2 className={styles.cartTitle}>注文状況</h2>
         {cart.length === 0 ? (
-          <p className={styles.empty}>まだ注文はありません。</p>
+          <p className={styles.empty}></p>
         ) : (
           cart.map((item, i) => (
             <div key={`${item.id}-${i}`} className={styles.cartItem}>
@@ -224,6 +234,7 @@ export default function MenuPage() {
           ))
         )}
         {/* カートの合計 */}
+        {errorMsg && <p className={styles.errorMsg}>{errorMsg}</p>}
         <div className={styles.cartTotal}>
           合計金額：{totalAmount.toLocaleString()}円(税込)
         </div>
@@ -231,13 +242,7 @@ export default function MenuPage() {
           注文をリセット
         </button>
         {/* 会計へボタン */}
-        <button
-          className={styles.checkoutButton}
-          onClick={() => {
-            clearCart();
-            router.push("/thankyou");
-          }}
-        >
+        <button className={styles.checkoutButton} onClick={goCheckout}>
           会計する
         </button>
       </aside>

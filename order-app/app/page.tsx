@@ -79,8 +79,8 @@ export default function MenuPage() {
   const [menu, setMenu] = useState<MenuItem[]>([]);
   const [cart, setCart] = useState<MenuItem[]>([]);
   const totalAmount = cart.reduce((sum, item) => sum + Number(item.price), 0); // カートの合計
-  const router = useRouter(); //画面移動で使用
   const [errorMsg, setErrorMsg] = useState("");
+  const router = useRouter(); //画面移動で使用
 
   // useEffect(() => { fetch(...); }, []); 画面の準備が終わったタイミングでmicroCMSからデータを取得する
   useEffect(() => {

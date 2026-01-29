@@ -201,10 +201,6 @@ export default function MenuPage() {
             </li>
           ))}
         </ul>
-
-        <Link href="/cart" className={styles.checkoutLink}>
-          注文確認へ進む
-        </Link>
       </main>
 
       <aside className={styles.cart}>
